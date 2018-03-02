@@ -28,13 +28,13 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
 	const player = props.match[1];
 	switch (player){
 		case 1:
-			return getGame(3);
+			return getGame(4);
 		case 2:
-			return getGame(3);
+			return getGame(4);
 		case 3:
-			return getGame(2);
+			return getGame(3);
 		case 4:
-			return getGame(2);
+			return getGame(3);
 		case 5:
             return msg.reply.text('CSGO');
 		default:
