@@ -25,20 +25,24 @@ bot.on(['/next'], (msg) => {
 });
 
 bot.on(/^\/game (.+)$/, (msg, props) => {
-	const player = props.match[1];
-	switch (player){
-		case 1:
-			return getGame(4);
-		case 2:
-			return getGame(4);
-		case 3:
-			return getGame(3);
-		case 4:
-			return getGame(3);
-		case 5:
-            return msg.reply.text('CSGO');
-		default:
-            return msg.reply.text('wrong message must be a number between 1 and 5');
+	try {
+        const player = parseInt(props.match[1]);
+		switch (player) {
+			case 1:
+				return getGame(4);
+			case 2:
+				return getGame(4);
+			case 3:
+				return getGame(3);
+			case 4:
+				return getGame(3);
+			case 5:
+				return msg.reply.text('CSGO');
+			default:
+				return msg.reply.text('wrong message must be a number between 1 and 5');
+		}
+	} catch (err){
+    	return msg.reply.text('unexpected error parsing string to int');
 	}
 
 });
