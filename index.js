@@ -24,6 +24,22 @@ bot.on(['/next'], (msg) => {
 	
 });
 
+bot.on(['/game'], (msg) => {
+	let r = getRandomInt(4);
+	switch (r){
+		case 0:
+			return msg.reply.text('PUBG');
+		case 1:
+            return msg.reply.text('CSGO');
+		case 2:
+            return msg.reply.text('Hunt');
+		case 3:
+            return msg.reply.text('Depth');
+		default:
+            return msg.reply.text('Bug');
+	}
+});
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
