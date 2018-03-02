@@ -25,8 +25,8 @@ bot.on(['/next'], (msg) => {
 });
 
 bot.on(/^\/game (.+)$/, (msg, props) => {
+    const player = parseInt(props.match[1]);
 	try {
-        const player = parseInt(props.match[1]);
 		switch (player) {
 			case 1:
 				return getGame(4);
