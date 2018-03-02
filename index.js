@@ -7,22 +7,12 @@ const bot = new TeleBot({
     }
 });
 
-bot.on(['/next'], (msg) => {
-	let r = getRandomInt(4);
-	switch (r) {
-		case 0:
-			return msg.reply.text('Spinne am Tag');
-		case 1:
-			return msg.reply.text('Spinne in der Nacht');
-		case 2:
-			return msg.reply.text('Butcher am Tag');
-		case 3:
-			return msg.reply.text('Butcher in der Nacht');
-		default:
-			return msg.reply.text('Bug');
-	}
-	
-});
+const missions = ['Spinne am Tag',
+                  'Spinne in der Nacht',
+                  'Butcher am Tag',
+                  'Butcher in der Nacht'];
+
+bot.on(['/next'], (msg) => msg.reply.text(missions[getRandomInt(missions.length)]));
 
 bot.on(/^\/game (.+)$/, (msg, props) => {
     const player = parseInt(props.match[1]);
