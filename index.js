@@ -42,7 +42,7 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
 				return msg.reply.text('wrong message must be a number between 1 and 5');
 		}
 	} catch (err){
-    	return msg.reply.text('unexpected error parsing string to int');
+    	return msg.reply.text('unexpected error parsing string to int' + player + " "+ err);
 	}
 
 });
