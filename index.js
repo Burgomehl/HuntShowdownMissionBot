@@ -29,13 +29,13 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
 	try {
 		switch (player) {
 			case 1:
-				return getGame(4);
+				return getGame(msg, 4);
 			case 2:
-				return getGame(4);
+				return getGame(msg, 4);
 			case 3:
-				return getGame(3);
+				return getGame(msg, 3);
 			case 4:
-				return getGame(3);
+				return getGame(msg, 3);
 			case 5:
 				return msg.reply.text('CSGO');
 			default:
@@ -47,7 +47,7 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
 
 });
 
-function getGame(value){
+function getGame(msg, value){
     let r = getRandomInt(value);
     switch (r){
         case 0:
