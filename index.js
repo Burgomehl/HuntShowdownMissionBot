@@ -24,21 +24,40 @@ bot.on(['/next'], (msg) => {
 	
 });
 
-bot.on(['/game'], (msg) => {
-	let r = getRandomInt(4);
-	switch (r){
-		case 0:
-			return msg.reply.text('PUBG');
+bot.on(/^\/game (.+)$/, (msg, props) => {
+	const player = props.match[1];
+	switch (player){
 		case 1:
-            return msg.reply.text('CSGO');
+			return getGame(3);
 		case 2:
-            return msg.reply.text('Hunt');
+			return getGame(3);
 		case 3:
-            return msg.reply.text('Depth');
+			return getGame(2);
+		case 4:
+			return getGame(2);
+		case 5:
+            return msg.reply.text('CSGO');
 		default:
-            return msg.reply.text('Bug');
+            return msg.reply.text('wrong message must be a number between 1 and 5');
 	}
+
 });
+
+function getGame(value){
+    let r = getRandomInt(value);
+    switch (r){
+        case 0:
+            return msg.reply.text('PUBG');
+        case 1:
+            return msg.reply.text('Depth');
+        case 2:
+            return msg.reply.text('CSGO');
+        case 3:
+            return msg.reply.text('Hunt');
+        default:
+            return msg.reply.text('Bug');
+    }
+}
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
