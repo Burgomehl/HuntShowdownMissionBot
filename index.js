@@ -38,7 +38,7 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
 		} else {
 			throw Exception("There is no game for so many persons");
 		}
-		const choosenGame = games[getRandomInt(games.length)];
+		let choosenGame = games[getRandomInt(games.length)];
 		if (choosenGame == ('CSGO')){
 			choosenGame += " "+ csgoMaps[getRandomInt(csgoMaps.length)];
 		}
