@@ -11,47 +11,43 @@ const missions = ['Spinne am Tag',
                   'Spinne in der Nacht',
                   'Butcher am Tag',
                   'Butcher in der Nacht'];
+				  
+const fivePlayerGames = ['CSGO'];
+const fourPlayerGames = ['Depth', 'PUBG'];
+const twoPlayerGames = ['Hunt'];
+
+const csgoMaps = ['Train','Dust2','Office','Canals','Dust','Cobbelstone','Mirage','Cache','Inferno','Agency','Nuke','Overpass'];
 
 bot.on(['/next'], (msg) => msg.reply.text(missions[getRandomInt(missions.length)]));
 
+bot.on(['/csgoMap'], (msg) => msg.reply.text(csgoMaps[getRandomInt(csgoMaps.length)]));
+
 bot.on(/^\/game (.+)$/, (msg, props) => {
     const player = parseInt(props.match[1]);
+	let games = [];
 	try {
-		switch (player) {
-			case 1:
-				return getGame(msg, 4);
-			case 2:
-				return getGame(msg, 4);
-			case 3:
-				return getGame(msg, 3);
-			case 4:
-				return getGame(msg, 3);
-			case 5:
-				return msg.reply.text('CSGO');
-			default:
-				return msg.reply.text('wrong message must be a number between 1 and 5');
+		if (Player == 5){
+			games = games.concat(fivePlayerGames);
+		}else if (Player <= 4 && Player >= 3){
+			games = games.concat(fivePlayerGames);
+			games = games.concat(fourPlayerGames);
+		}else if (Player <= 2 && Player > 0){
+			games = games.concat(fivePlayerGames);
+			games = games.concat(fourPlayerGames);
+			games = games.concat(twoPlayerGames);
+		} else {
+			throw Exception("There is no game for so many persons");
 		}
+		const choosenGame = games[getRandomInt(games.length)];
+		if (choosenGame == ('CSGO')){
+			choosenGame += " "+ csgoMaps[getRandomInt(csgoMaps.length)];
+		}
+		msg.reply.text(choosenGame);
 	} catch (err){
     	return msg.reply.text('unexpected error parsing string to int' + player + " "+ err);
 	}
 
 });
-
-function getGame(msg, value){
-    let r = getRandomInt(value);
-    switch (r){
-        case 0:
-            return msg.reply.text('PUBG');
-        case 1:
-            return msg.reply.text('Depth');
-        case 2:
-            return msg.reply.text('CSGO');
-        case 3:
-            return msg.reply.text('Hunt');
-        default:
-            return msg.reply.text('Bug');
-    }
-}
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
