@@ -26,23 +26,20 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
     const player = parseInt(props.match[1]);
 	let games = [];
 	try {
-		if (player == 5){
+		if (player <= 5){
 			games = games.concat(fivePlayerGames);
-		}else if (player <= 4 && player >= 3){
-			games = games.concat(fivePlayerGames);
+		}
+		if (player <= 4){
 			games = games.concat(fourPlayerGames);
-		}else if (player <= 2 && player > 0){
-			games = games.concat(fivePlayerGames);
-			games = games.concat(fourPlayerGames);
+		}
+		if (player <= 2){
 			games = games.concat(twoPlayerGames);
-		} else {
-			throw Exception("There is no game for so many persons");
 		}
 		let choosenGame = games[getRandomInt(games.length)];
 		if (choosenGame == ('CSGO')){
-			choosenGame += " "+ csgoMaps[getRandomInt(csgoMaps.length)];
+			return msg.reply.text(choosenGame + " " + csgoMaps[getRandomInt(csgoMaps.length)]);
 		}
-		msg.reply.text(choosenGame);
+		return msg.reply.text(choosenGame);
 	} catch (err){
     	return msg.reply.text('unexpected error parsing string to int' + player + " "+ err);
 	}
