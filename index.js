@@ -36,8 +36,10 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
 			games = games.concat(twoPlayerGames);
 		}
 		let choosenGame = games[getRandomInt(games.length)];
-		if (choosenGame == ('CSGO')){
+		if (choosenGame == 'CSGO'){
 			return msg.reply.text(choosenGame + " " + csgoMaps[getRandomInt(csgoMaps.length)]);
+		} else if (choosenGame == 'Hunt'){
+			return msg.reply.text(choosenGame + " " + missions[getRandomInt(missions.length)]);
 		}
 		return msg.reply.text(choosenGame);
 	} catch (err){
