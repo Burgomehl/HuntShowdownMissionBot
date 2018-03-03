@@ -26,12 +26,12 @@ bot.on(/^\/game (.+)$/, (msg, props) => {
     const player = parseInt(props.match[1]);
 	let games = [];
 	try {
-		if (Player == 5){
+		if (player == 5){
 			games = games.concat(fivePlayerGames);
-		}else if (Player <= 4 && Player >= 3){
+		}else if (player <= 4 && player >= 3){
 			games = games.concat(fivePlayerGames);
 			games = games.concat(fourPlayerGames);
-		}else if (Player <= 2 && Player > 0){
+		}else if (player <= 2 && player > 0){
 			games = games.concat(fivePlayerGames);
 			games = games.concat(fourPlayerGames);
 			games = games.concat(twoPlayerGames);
