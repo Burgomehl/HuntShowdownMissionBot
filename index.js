@@ -16,7 +16,7 @@ const fivePlayerGames = ['CSGO'];
 const fourPlayerGames = ['Depth', 'PUBG'];
 const twoPlayerGames = ['Hunt'];
 
-const csgoMaps = ['Train','Dust2','Office','Canals','Dust','Cobbelstone','Mirage','Cache','Inferno','Agency','Nuke','Overpass'];
+const csgoMaps = ['Train','Dust2','Office','Canals','Cobblestone','Mirage','Cache','Inferno','Agency','Nuke','Overpass'];
 
 bot.on(['/next'], (msg) => msg.reply.text(missions[getRandomInt(missions.length)]));
 
